@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wellness Living Inc. - Holistic Health</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc; /* Light blue-gray for a calming feel */
+            color: #334155; /* Darker text for readability */
+            /* scroll-behavior: smooth; Removed from here as JS will handle it */
+        }
+        /* Custom scrollbar for a cleaner look */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f5f9;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #94a3b8;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #64748b;
+        }
+        /* Hide sections by default, to be controlled by JavaScript */
+        .service-detail-section {
+            display: none;
+        }
+    </style>
+</head>
+<body class="antialiased">
+    <header class="bg-black bg-opacity-50 py-4 sticky top-0 z-50 transition-all duration-300">
+        <nav class="container mx-auto px-4 flex justify-between items-center">
+            <a href="#home" class="flex items-center space-x-2">
+                <div class="bg-white p-1 rounded-full shadow-inner">
+                    <img src="https://framerusercontent.com/images/uOfq2iGVqx76v4QzJYDy0ncT7y0.png" alt="Wellness Living Logo" class="h-10 w-auto rounded-full">
+                </div>
+                <span class="text-xl font-bold text-white">Wellness Living Inc.</span>
+            </a>
+
+            <button id="mobile-menu-button" class="md:hidden focus:outline-none">
+                <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
+
+            <ul id="desktop-menu" class="hidden md:flex space-x-8 items-center">
+                <li><a href="#home" class="text-white hover:text-emerald-200 font-medium transition duration-300">Home</a></li>
+                <li><a href="#services" class="text-white hover:text-emerald-200 font-medium transition duration-300">Services</a></li>
+                <li><a href="#about" class="text-white hover:text-emerald-200 font-medium transition duration-300">About Us</a></li>
+                <li><a href="#contact" class="bg-emerald-600 hover:bg-emerald-700 text-white font-semibold py-2 px-4 rounded-full shadow-md transition duration-300">Book Consultation</a></li>
+            </ul>
+        </nav>
+
+        <div id="mobile-menu-overlay" class="md:hidden hidden fixed inset-0 bg-black bg-opacity-95 z-40">
+            <div class="flex justify-end p-4">
+                <button id="close-mobile-menu" class="focus:outline-none">
+                    <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
+            </div>
+            <ul class="flex flex-col items-center space-y-6 text-xl">
+                <li><a href="#home" class="text-white hover:text-emerald-200 font-medium transition duration-300 py-2">Home</a></li>
+                <li><a href="#services" class="text-white hover:text-emerald-200 font-medium transition duration-300 py-2">Services</a></li>
+                <li><a href="#about" class="text-white hover:text-emerald-200 font-medium transition duration-300 py-2">About Us</a></li>
+                <li><a href="#contact" class="bg-emerald-600 hover:bg-emerald-700 text-white font-semibold py-2 px-4 rounded-full shadow-md transition duration-300">Book Consultation</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <main id="main-content">
+        <section id="home" class="relative min-h-screen flex items-center justify-start overflow-hidden">
+            <div class="absolute inset-0">
+                <img src="https://framerusercontent.com/images/A5W8Y8c9uI5dbjqgYr2jtrTb8.jpg" alt="Hero Background Image" class="w-full h-full object-cover">
+                <div class="absolute inset-0 bg-black opacity-20"></div>
+            </div>
+
+            <div class="container mx-auto px-4 relative z-10 text-left pl-8 md:pl-16">
+                <h1 class="text-4xl md:text-6xl font-extrabold text-white leading-tight mb-4 animate-fade-in-down">
+                    Your Journey to<br>Complete Wellness<br>Starts Here
+                </h1>
+                <p class="text-lg md:text-xl text-white max-w-xl mb-8 animate-fade-in-up">
+                    Experience holistic healing that nurtures your mind, body, and spirit through our personalized recovery services.
+                </p>
+                <div class="flex flex-col sm:flex-row items-center space-y-4 sm:space-y-0 sm:space-x-4">
+                    <a href="#contact" class="inline-block bg-emerald-600 hover:bg-emerald-700 text-white font-semibold py-3 px-8 rounded-full shadow-lg transform hover:scale-105 transition duration-300 ease-in-out">
+                        Book Consultation
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section id="services" class="py-16 md:py-24 bg-white">
+            <div class="container mx-auto px-4">
+                <h2 class="text-3xl md:text-5xl font-bold text-center text-emerald-700 mb-12">Our Beautiful Facility</h2>
+
+                <div class="max-w-4xl mx-auto mb-16 rounded-xl shadow-xl overflow-hidden animate-fade-in">
+                    <video controls class="w-full h-auto">
+                        <source src="https://framerusercontent.com/assets/evvhVvXOhHt9CgToBADkFsD1luU.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+
+                <h2 id="our-services-heading" class="text-3xl md:text-5xl font-bold text-center text-emerald-700 mb-12 mt-16">Our Services</h2>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <a href="#" data-service="recovery-accommodations-detail" class="service-card block bg-gradient-to-br from-white to-emerald-50 p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 group">
+                        <img src="https://framerusercontent.com/images/vWkYnDXPlSpyGhk2mBd6uMOIec.jpeg?scale-down-to=4096" alt="Recovery Accommodations" class="w-full h-48 object-cover rounded-lg mb-4 shadow-md">
+                        <h3 class="text-2xl font-semibold text-emerald-700 mb-3 group-hover:text-emerald-800">Recovery Accommodations</h3>
+                        <p class="text-gray-600 text-base">
+                            Experience a tranquil and supportive environment designed for optimal healing and recovery, ensuring comfort and peace of mind.
+                        </p>
+                    </a>
+
+                    <a href="#" data-service="iv-therapy-detail" class="service-card block bg-gradient-to-br from-white to-emerald-50 p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 group">
+                        <img src="https://framerusercontent.com/images/zNEitnc1ksq98wYJGB7dM8Q1qM.jpeg?scale-down-to=4096" alt="IV Therapy" class="w-full h-48 object-cover rounded-lg mb-4 shadow-md">
+                        <h3 class="text-2xl font-semibold text-emerald-700 mb-3 group-hover:text-emerald-800">IV Therapy</h3>
+                        <p class="text-gray-600 text-base">
+                            Replenish essential nutrients directly into your bloodstream for rapid absorption, boosting energy, immunity, and overall vitality.
+                        </p>
+                    </a>
+
+                    <a href="#" data-service="lymphatic-drainage-detail" class="service-card block bg-gradient-to-br from-white to-emerald-50 p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 group">
+                        <img src="https://framerusercontent.com/images/dEVu3J23bjtlRvb3Xvze5JDzU.jpeg?scale-down-to=4096" alt="Lymphatic Drainage" class="w-full h-48 object-cover rounded-lg mb-4 shadow-md">
+                        <h3 class="text-2xl font-semibold text-emerald-700 mb-3 group-hover:text-emerald-800">Lymphatic Drainage</h3>
+                        <p class="text-gray-600 text-base">
+                            Gentle massage techniques to stimulate lymphatic flow, reducing swelling, detoxifying the body, and supporting immune health.
+                        </p>
+                    </a>
+
+                    <a href="#" data-service="personalized-healing-plans-detail" class="service-card block bg-gradient-to-br from-white to-emerald-50 p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 group">
+                        <img src="https://framerusercontent.com/images/k7vrOJ2dhJIimySIbPGoIzqUdh8.png" alt="Personalized Healing Plans" class="w-full h-48 object-cover rounded-lg mb-4 shadow-md">
+                        <h3 class="text-2xl font-semibold text-emerald-700 mb-3 group-hover:text-emerald-800">Personalized Healing Plans</h3>
+                        <p class="text-gray-600 text-base">
+                            Customized strategies tailored to your unique needs, integrating various holistic modalities for comprehensive well-being.
+                        </p>
+                    </a>
+
+                    <a href="#" data-service="medical-care-support-detail" class="service-card block bg-gradient-to-br from-white to-emerald-50 p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 group">
+                        <img src="data:image/jpeg;base64,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" alt="Medical Care & Support" class="w-full h-48 object-cover rounded-lg mb-4 shadow-md">
+                        <h3 class="text-2xl font-semibold text-emerald-700 mb-3 group-hover:text-emerald-800">Medical Care & Support</h3>
+                        <p class="text-gray-600 text-base">
+                            Compassionate and integrated medical oversight, ensuring your health journey is supported by expert care and guidance.
+                        </p>
+                    </a>
+
+                    <a href="#" data-service="gourmet-nutrition-detail" class="service-card block bg-gradient-to-br from-white to-emerald-50 p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 group">
+                        <img src="https://framerusercontent.com/images/clBWVxpXarRWFPJQDAAuiHBTbh0.jpg" alt="Gourmet Nutrition" class="w-full h-48 object-cover rounded-lg mb-4 shadow-md">
+                        <h3 class="text-2xl font-semibold text-emerald-700 mb-3 group-hover:text-emerald-800">Gourmet Nutrition</h3>
+                        <p class="text-gray-600 text-base">
+                            Delight in nutrient-rich, delicious meals crafted to support your healing and wellness goals, tailored to your dietary needs.
+                        </p>
+                    </a>
+
+                    <a href="#" data-service="concierge-therapy-detail" class="service-card block bg-gradient-to-br from-white to-emerald-50 p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 group">
+                        <img src="https://placehold.co/600x400/059669/064E40?text=Concierge+Therapy" alt="Concierge Therapy" classs="w-full h-48 object-cover rounded-lg mb-4 shadow-md">
+                        <h3 class="text-2xl font-semibold text-emerald-700 mb-3 group-hover:text-emerald-800">Concierge Therapy</h3>
+                        <p class="text-gray-600 text-base">
+                            Receive personalized, high-level therapeutic support with flexible scheduling and dedicated attention to your emotional well-being.
+                        </p>
+                    </a>
+
+                    <a href="#" data-service="wellness-therapy-detail" class="service-card block bg-gradient-to-br from-white to-emerald-50 p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 group">
+                        <img src="https://placehold.co/600x400/047857/022C22?text=Wellness+Therapy" alt="Wellness Therapy" class="w-full h-48 object-cover rounded-lg mb-4 shadow-md">
+                        <h3 class="text-2xl font-semibold text-emerald-700 mb-3 group-hover:text-emerald-800">Wellness Therapy</h3>
+                        <p class="text-gray-600 text-base">
+                            A range of therapeutic practices designed to promote overall balance, reduce stress, and enhance your physical and mental harmony.
+                        </p>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="py-16 md:py-24 bg-gradient-to-br from-emerald-50 to-white">
+            <div class="container mx-auto px-4">
+                <h2 class="text-3xl md:text-5xl font-bold text-center text-emerald-700 mb-8">About Wellness Living Inc.</h2>
+                <div class="flex flex-col lg:flex-row items-center lg:space-x-8">
+                    <div class="lg:w-1/2 mb-8 lg:mb-0">
+                        <img src="https://framerusercontent.com/images/ythVCHqy4sCFTAR9Pv8E9FMRvk.jpg" alt="About Us Image" class="w-full h-auto rounded-xl shadow-lg">
+                    </div>
+                    <div class="lg:w-1/2 text-lg text-gray-700 leading-relaxed">
+                        <h3 class="text-2xl font-semibold text-emerald-700 mb-4">Our Story</h3>
+                        <p class="mb-4">
+                            At Wellness Living Inc., we provide a sanctuary for patients recovering from cosmetic surgery, offering a stress-free environment with personalized care and expert support. Our retreat combines luxury accommodations with compassionate service to ensure your healing journey is as comfortable and effective as possible.
+                        </p>
+                        <p class="mb-4">
+                            Our dedicated team specializes in post-surgical recovery, delivering tailored solutions like IV therapy, lymphatic drainage, and gourmet nutrition to promote faster healing and lasting well-being. Your comfort, recovery, and overall health are always our top priorities, guiding everything we do to help you feel your best after surgery.
+                        </p>
+                        <h3 class="text-2xl font-semibold text-emerald-700 mb-4 mt-8">Our Mission</h3>
+                        <p>
+                            At Wellness Living Inc., our mission is to empower every patient with the care and expertise they need to achieve a smooth and effective recovery after cosmetic surgery. We are dedicated to providing personalized recovery plans, expert treatments like IV therapy and lymphatic drainage, and a nurturing environment that delivers lasting, meaningful results tailored to your individual needs.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="py-16 md:py-24 bg-white">
+            <div class="container mx-auto px-4 text-center">
+                <h2 class="text-3xl md:text-5xl font-bold text-emerald-700 mb-8">Connect With Us</h2>
+                <p class="text-lg text-gray-700 mb-8 max-w-2xl mx-auto">
+                    Ready to start your holistic wellness journey? Reach out to us today for a consultation or to learn more about our services.
+                </p>
+                <div class="flex flex-col md:flex-row justify-center items-center gap-8">
+                    <div class="bg-gradient-to-br from-emerald-50 to-teal-50 p-6 rounded-xl shadow-lg w-full md:w-1/3">
+                        <h3 class="text-xl font-semibold text-emerald-700 mb-4">Get in Touch</h3>
+                        <p class="text-gray-600 mb-2"><strong class="text-emerald-600">Email:</strong> info@wellnesslivinginc.com</p>
+                        <p class="text-gray-600 mb-2"><strong class="text-emerald-600">Phone:</strong> (123) 456-7890</p>
+                        <p class="text-600"><strong class="text-emerald-600">Address:</strong> 123 Holistic Way, Wellness City, FL 33301</p>
+                    </div>
+                    <div class="bg-gradient-to-br from-emerald-50 to-teal-50 p-6 rounded-xl shadow-lg w-full md:w-1/3">
+                        <h3 class="text-xl font-semibold text-emerald-700 mb-4">Send Us a Message</h3>
+                        <form class="space-y-4">
+                            <input type="text" placeholder="Your Name" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition duration-200">
+                            <input type="email" placeholder="Your Email" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition duration-200">
+                            <textarea placeholder="Your Message" rows="4" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition duration-200"></textarea>
+                            <button type="submit" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-semibold py-3 rounded-lg shadow-md transform hover:scale-105 transition duration-300 ease-in-out">
+                                Send Message
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div id="service-details-container">
+        <section id="recovery-accommodations-detail" class="service-detail-section py-16 md:py-24 bg-white">
+            <div class="container mx-auto px-4">
+                <h1 class="text-4xl md:text-5xl font-bold text-center text-emerald-700 mb-12">Recovery Accommodations</h1>
+
+                <div class="max-w-4xl mx-auto bg-white p-8 rounded-xl shadow-lg">
+                    <img src="https://framerusercontent.com/images/vWkYnDXPlSpyGhk2mBd6uMOIec.jpeg?scale-down-to=4096" alt="Recovery Accommodations" class="w-full h-64 object-cover rounded-lg mb-8 shadow-md">
+
+                    <h2 class="text-3xl font-semibold text-emerald-700 mb-6">Our Accommodations Include:</h2>
+                    <ul class="list-disc list-inside text-lg text-gray-700 space-y-3 mb-8">
+                        <li><strong class="text-emerald-600">Luxury Semi-Private Rooms:</strong> Serene spaces for relaxation.</li>
+                        <li><strong class="text-emerald-600">Private Rooms:</strong> Exclusive comfort for your stay.</li>
+                    </ul>
+
+                    <h2 class="text-3xl font-semibold text-emerald-700 mb-6">Recovery Suites Pricing:</h2>
+                    <div class="overflow-x-auto">
+                        <table class="min-w-full bg-white border border-gray-200 rounded-lg shadow-sm">
+                            <thead>
+                                <tr class="bg-emerald-100 text-emerald-800 uppercase text-sm leading-normal">
+                                    <th class="py-3 px-6 text-left">Nights</th>
+                                    <th class="py-3 px-6 text-left">Shared</th>
+                                    <th class="py-3 px-6 text-left">Private</th>
+                                </tr>
+                            </thead>
+                            <tbody class="text-gray-700 text-base font-light">
+                                <tr class="border-b border-gray-200 hover:bg-gray-50">
+                                    <td class="py-3 px-6 whitespace-nowrap">3 Nights</td>
+                                    <td class="py-3 px-6 whitespace-nowrap">$965</td>
+                                    <td class="py-3 px-6 whitespace-nowrap">$1,445</td>
+                                </tr>
+                                <tr class="border-b border-gray-200 hover:bg-gray-50">
+                                    <td class="py-3 px-6 whitespace-nowrap">4 Nights</td>
+                                    <td class="py-3 px-6 whitespace-nowrap">$1,285</td>
+                                    <td class="py-3 px-6 whitespace-nowrap">$1,926</td>
+                                </tr>
+                                <tr class="border-b border-gray-200 hover:bg-gray-50">
+                                    <td class="py-3 px-6 whitespace-nowrap">5 Nights</td>
+                                    <td class="py-3 px-6 whitespace-nowrap">$1,600</td>
+                                    <td class="py-3 px-6 whitespace-nowrap">$2,405</td>
+                                </tr>
+                                <tr class="border-b border-gray-200 hover:bg-gray-50">
+                                    <td class="py-3 px-6 whitespace-nowrap">6 Nights</td>
+                                    <td class="py-3 px-6 whitespace-nowrap">$1,925</td>
+                                    <td class="py-3 px-6 whitespace-nowrap">$2,965</td>
+                                </tr>
+                                <tr class="hover:bg-gray-50">
+                                    <td class="py-3 px-6 whitespace-nowrap">7 Nights</td>
+                                    <td class="py-3 px-6 whitespace-nowrap">$2,245</td>
+                                    <td class="py-3 px-6 whitespace-nowrap">$3,465</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <p class="text-center text-gray-600 mt-10">
+                        For more details or to book your stay, please <a href="#contact" class="text-emerald-600 hover:underline font-semibold">contact us</a>.
+                    </p>
+                    <div class="text-center mt-8">
+                        <button onclick="scrollToOurServices()" class="inline-block bg-emerald-600 hover:bg-emerald-700 text-white font-semibold py-3 px-8 rounded-full shadow-lg transform hover:scale-105 transition duration-300 ease-in-out">
+                            Back to Services
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="iv-therapy-detail" class="service-detail-section py-16 md:py-24 bg-white">
+            <div class="container mx-auto px-4 text-center">
+                <h1 class="text-4xl md:text-5xl font-bold text-emerald-700 mb-8">IV Therapy</h1>
+                <p class="text-lg text-gray-700 max-w-2xl mx-auto mb-8">
+                    Replenish essential nutrients directly into your bloodstream for rapid absorption, boosting energy, immunity, and overall vitality.
+                </p>
+                <img src="https://framerusercontent.com/images/zNEitnc1ksq98wYJGB7dM8Q1qM.jpeg?scale-down-to=4096" alt="IV Therapy" class="w-full md:w-2/3 lg:w-1/2 mx-auto h-64 object-cover rounded-lg shadow-md mb-8">
+
+                <div class="max-w-4xl mx-auto bg-white p-8 rounded-xl shadow-lg">
+                    <h2 class="text-3xl font-semibold text-emerald-700 mb-6">Our IV Therapy Options:</h2>
+                    <div class="overflow-x-auto">
+                        <table class="min-w-full bg-white border border-gray-200 rounded-lg shadow-sm">
+                            <thead>
+                                <tr class="bg-emerald-100 text-emerald-800 uppercase text-sm leading-normal">
+                                    <th class="py-3 px-6 text-left">Therapy</th>
+                                    <th class="py-3 px-6 text-left">Price</th>
+                                    <th class="py-3 px-6 text-left">Description</th>
+                                </tr>
+                            </thead>
+                            <tbody class="text-gray-700 text-base font-light">
+                                <tr class="border-b border-gray-200 hover:bg-gray-50">
+                                    <td class="py-3 px-6 whitespace-nowrap">Hydration & Electrolyte Replenishment</td>
+                                    <td class="py-3 px-6 whitespace-nowrap">$150</td>
+                                    <td class="py-3 px-6">Replenishes fluids for faster healing.</td>
+                                </tr>
+                                <tr class="border-b border-gray-200 hover:bg-gray-50">
+                                    <td class="py-3 px-6 whitespace-nowrap">Anti-Inflammatory & Pain Relief</td>
+                                    <td class="py-3 px-6 whitespace-nowrap">$175</td>
+                                    <td class="py-3 px-6">Reduces swelling and discomfort.</td>
+                                </tr>
+                                <tr class="border-b border-gray-200 hover:bg-gray-50">
+                                    <td class="py-3 px-6 whitespace-nowrap">Skin & Tissue Healing</td>
+                                    <td class="py-3 px-6 whitespace-nowrap">$200</td>
+                                    <td class="py-3 px-6">Supports wound healing and minimizes scarring.</td>
+                                </tr>
+                                <tr class="border-b border-gray-200 hover:bg-gray-50">
+                                    <td class="py-3 px-6 whitespace-nowrap">Immunity & Infection Prevention</td>
+                                    <td class="py-3 px-6 whitespace-nowrap">$185</td>
+                                    <td class="py-3 px-6">Boosts immunity with Vitamin C, zinc, and glutathione.</td>
+                                </tr>
+                                <tr class="border-b border-gray-200 hover:bg-gray-50">
+                                    <td class="py-3 px-6 whitespace-nowrap">Signature Post-Op Recovery IV</td>
+                                    <td class="py-3 px-6 whitespace-nowrap">$250</td>
+                                    <td class="py-3 px-6">Comprehensive blend for hydration and recovery.</td>
+                                </tr>
+                                <tr class="border-b border-gray-200 hover:bg-gray-50">
+                                    <td class="py-3 px-6 whitespace-nowrap">IV + Lymphatic Massage Combo</td>
+                                    <td class="py-3 px-6 whitespace-nowrap">$250</td>
+                                    <td class="py-3 px-6">Includes 1 IV session and 1 30-min massage.</td>
+                                </tr>
+                                <tr class="hover:bg-gray-50">
+                                    <td class="py-3 px-6 whitespace-nowrap">VIP Recovery Deluxe Package</td>
+                                    <td class="py-3 px-6 whitespace-nowrap">$750</td>
+                                    <td class="py-3 px-6">3 IVs, 3 massages, vitamin booster, and personalized plan.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="text-center mt-8">
+                        <button onclick="scrollToOurServices()" class="inline-block bg-emerald-600 hover:bg-emerald-700 text-white font-semibold py-3 px-8 rounded-full shadow-lg transform hover:scale-105 transition duration-300 ease-in-out">
+                            Back to Services
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="lymphatic-drainage-detail" class="service-detail-section py-16 md:py-24 bg-white">
+            <div class="container mx-auto px-4 text-center">
+                <h1 class="text-4xl md:text-5xl font-bold text-emerald-700 mb-8">Lymphatic Drainage</h1>
+                <p class="text-lg text-gray-700 max-w-2xl mx-auto mb-8">
+                    Gentle massage techniques to stimulate lymphatic flow, reducing swelling, detoxifying the body, and supporting immune health.
+                </p>
+                <img src="https://framerusercontent.com/images/dEVu3J23bjtlRvb3Xvze5JDzU.jpeg?scale-down-to=4096" alt="Lymphatic Drainage" class="w-full md:w-2/3 lg:w-1/2 mx-auto h-64 object-cover rounded-lg shadow-md mb-8">
+                <div class="max-w-4xl mx-auto bg-white p-8 rounded-xl shadow-lg">
+                    <h2 class="text-3xl font-semibold text-emerald-700 mb-6">Lymphatic Drainage Options:</h2>
+                    <div class="overflow-x-auto">
+                        <table class="min-w-full bg-white border border-gray-200 rounded-lg shadow-sm">
+                            <thead>
+                                <tr class="bg-emerald-100 text-emerald-800 uppercase text-sm leading-normal">
+                                    <th class="py-3 px-6 text-left">Duration</th>
+                                    <th class="py-3 px-6 text-left">Price</th>
+                                    <th class="py-3 px-6 text-left">Description</th>
+                                </tr>
+                            </thead>
+                            <tbody class="text-gray-700 text-base font-light">
+                                <tr class="border-b border-gray-200 hover:bg-gray-50">
+                                    <td class="py-3 px-6 whitespace-nowrap">30 Minutes</td>
+                                    <td class="py-3 px-6 whitespace-nowrap">$85</td>
+                                    <td class="py-3 px-6">Reduces swelling and enhances circulation.</td>
+                                </tr>
+                                <tr class="hover:bg-gray-50">
+                                    <td class="py-3 px-6 whitespace-nowrap">60 Minutes</td>
+                                    <td class="py-3 px-6 whitespace-nowrap">$150</td>
+                                    <td class="py-3 px-6">Deepens relaxation and speeds recovery.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="text-center mt-8">
+                        <button onclick="scrollToOurServices()" class="inline-block bg-emerald-600 hover:bg-emerald-700 text-white font-semibold py-3 px-8 rounded-full shadow-lg transform hover:scale-105 transition duration-300 ease-in-out">
+                            Back to Services
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="personalized-healing-plans-detail" class="service-detail-section py-16 md:py-24 bg-white">
+            <div class="container mx-auto px-4 text-center">
+                <h1 class="text-4xl md:text-5xl font-bold text-emerald-700 mb-8">Personalized Healing Plans</h1>
+                <p class="text-lg text-gray-700 max-w-2xl mx-auto mb-8">
+                    Detailed information about our Personalized Healing Plans is coming soon!
+                </p>
+                <img src="https://framerusercontent.com/images/k7vrOJ2dhJIimySIbPGoIzqUdh8.png" alt="Personalized Healing Plans" class="w-full md:w-2/3 lg:w-1/2 mx-auto h-64 object-cover rounded-lg shadow-md mb-8">
+                <div class="text-center mt-8">
+                    <button onclick="scrollToOurServices()" class="inline-block bg-emerald-600 hover:bg-emerald-700 text-white font-semibold py-3 px-8 rounded-full shadow-lg transform hover:scale-105 transition duration-300 ease-in-out">
+                            Back to Services
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+        <section id="medical-care-support-detail" class="service-detail-section py-16 md:py-24 bg-white">
+            <div class="container mx-auto px-4 text-center">
+                <h1 class="text-4xl md:text-5xl font-bold text-emerald-700 mb-8">Medical Care & Support</h1>
+                <p class="text-lg text-gray-700 max-w-2xl mx-auto mb-8">
+                    Comprehensive medical support for a smooth recovery. Our dedicated team ensures your health journey is supported by expert care and guidance.
+                </p>
+                <img src="data:image/jpeg;base64,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" alt="Medical Care & Support" class="w-full md:w-2/3 lg:w-1/2 mx-auto h-64 object-cover rounded-lg shadow-md mb-8">
+                <div class="max-w-4xl mx-auto bg-white p-8 rounded-xl shadow-lg">
+                    <h2 class="text-3xl font-semibold text-emerald-700 mb-6">Medical Care & Support Options:</h2>
+                    <div class="overflow-x-auto">
+                        <table class="min-w-full bg-white border border-gray-200 rounded-lg shadow-sm">
+                            <thead>
+                                <tr class="bg-emerald-100 text-emerald-800 uppercase text-sm leading-normal">
+                                    <th class="py-3 px-6 text-left">Duration</th>
+                                    <th class="py-3 px-6 text-left">Price</th>
+                                    <th class="py-3 px-6 text-left">Description</th>
+                                </tr>
+                            </thead>
+                            <tbody class="text-gray-700 text-base font-light">
+                                <tr class="border-b border-gray-200 hover:bg-gray-50">
+                                    <td class="py-3 px-6 whitespace-nowrap">30 Minutes</td>
+                                    <td class="py-3 px-6 whitespace-nowrap">$85</td>
+                                    <td class="py-3 px-6">Reduces swelling and enhances circulation.</td>
+                                </tr>
+                                <tr class="hover:bg-gray-50">
+                                    <td class="py-3 px-6 whitespace-nowrap">60 Minutes</td>
+                                    <td class="py-3 px-6 whitespace-nowrap">$150</td>
+                                    <td class="py-3 px-6">Deepens relaxation and speeds recovery.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="text-center mt-8">
+                        <button onclick="scrollToOurServices()" class="inline-block bg-emerald-600 hover:bg-emerald-700 text-white font-semibold py-3 px-8 rounded-full shadow-lg transform hover:scale-105 transition duration-300 ease-in-out">
+                            Back to Services
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="gourmet-nutrition-detail" class="service-detail-section py-16 md:py-24 bg-white">
+            <div class="container mx-auto px-4 text-center">
+                <h1 class="text-4xl md:text-5xl font-bold text-emerald-700 mb-8">Gourmet Nutrition</h1>
+                <p class="text-lg text-gray-700 max-w-2xl mx-auto mb-8">
+                    Detailed information about our Gourmet Nutrition services is coming soon!
+                </p>
+                <img src="https://framerusercontent.com/images/clBWVxpXarRWFPJQDAAuiHBTbh0.jpg" alt="Gourmet Nutrition" class="w-full md:w-2/3 lg:w-1/2 mx-auto h-64 object-cover rounded-lg shadow-md mb-8">
+                <div class="text-center mt-8">
+                    <button onclick="scrollToOurServices()" class="inline-block bg-emerald-600 hover:bg-emerald-700 text-white font-semibold py-3 px-8 rounded-full shadow-lg transform hover:scale-105 transition duration-300 ease-in-out">
+                        Back to Services
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <section id="concierge-therapy-detail" class="service-detail-section py-16 md:py-24 bg-white">
+            <div class="container mx-auto px-4 text-center">
+                <h1 class="text-4xl md:text-5xl font-bold text-emerald-700 mb-8">Concierge Therapy</h1>
+                <p class="text-lg text-gray-700 max-w-2xl mx-auto mb-8">
+                    Detailed information about our Concierge Therapy services is coming soon!
+                </p>
+                <img src="https://placehold.co/600x400/059669/064E40?text=Concierge+Therapy" alt="Concierge Therapy" class="w-full md:w-2/3 lg:w-1/2 mx-auto h-64 object-cover rounded-lg shadow-md mb-8">
+                <div class="text-center mt-8">
+                    <button onclick="scrollToOurServices()" class="inline-block bg-emerald-600 hover:bg-emerald-700 text-white font-semibold py-3 px-8 rounded-full shadow-lg transform hover:scale-105 transition duration-300 ease-in-out">
+                        Back to Services
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <section id="wellness-therapy-detail" class="service-detail-section py-16 md:py-24 bg-white">
+            <div class="container mx-auto px-4 text-center">
+                <h1 class="text-4xl md:text-5xl font-bold text-emerald-700 mb-8">Wellness Therapy</h1>
+                <p class="text-lg text-gray-700 max-w-2xl mx-auto mb-8">
+                    Detailed information about our Wellness Therapy services is coming soon!
+                </p>
+                <img src="https://placehold.co/600x400/047857/022C22?text=Wellness+Therapy" alt="Wellness Therapy" class="w-full md:w-2/3 lg:w-1/2 mx-auto h-64 object-cover rounded-lg shadow-md mb-8">
+                <div class="text-center mt-8">
+                    <button onclick="scrollToOurServices()" class="inline-block bg-emerald-600 hover:bg-emerald-700 text-white font-semibold py-3 px-8 rounded-full shadow-lg transform hover:scale-105 transition duration-300 ease-in-out">
+                        Back to Services
+                    </button>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="container mx-auto px-4 text-center">
+            <img src="https://framerusercontent.com/images/uOfq2iGVqx76v4QzJYDy0ncT7y0.png" alt="Wellness Living Logo" class="h-8 mx-auto mb-4 rounded-full shadow-sm">
+            <p class="text-sm mb-2">&copy; 2023 Wellness Living Inc. All rights reserved.</p>
+            <p class="text-xs text-gray-400">Embracing holistic health for a balanced life.</p>
+            <div class="flex justify-center space-x-4 mt-4">
+                <a href="#" class="text-gray-400 hover:text-white transition duration-300">Privacy Policy</a>
+                <span class="text-gray-500">|</span>
+                <a href="#" class="text-gray-400 hover:text-white transition duration-300">Terms of Service</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const closeMobileMenuButton = document.getElementById('close-mobile-menu');
+        const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
+        const mainContent = document.getElementById('main-content');
+        const serviceDetailSections = document.querySelectorAll('.service-detail-section');
+
+        // Function to show main content and hide all service detail sections
+        function showMainContent() {
+            mainContent.style.display = 'block'; // Show main content
+            serviceDetailSections.forEach(section => {
+                section.style.display = 'none'; // Hide all service details
+            });
+        }
+
+        function toggleMobileMenu() {
+            mobileMenuOverlay.classList.toggle('hidden');
+        }
+
+        mobileMenuButton.addEventListener('click', toggleMobileMenu);
+        closeMobileMenuButton.addEventListener('click', toggleMobileMenu);
+
+        // Function to show a specific service detail section and hide others
+        function showServiceDetail(serviceId) {
+            mainContent.style.display = 'none'; // Hide main content
+            serviceDetailSections.forEach(section => {
+                if (section.id === serviceId) {
+                    section.style.display = 'block'; // Show the requested service detail
+                } else {
+                    section.style.display = 'none'; // Hide other service details
+                }
+            });
+            window.scrollTo({ top: 0, behavior: "smooth" }); // Scroll to top of the new section
+        }
+
+        // Function to show main content and scroll to the "Our Services" heading
+        function scrollToOurServices() {
+            showMainContent(); // Ensure main content is visible and detail sections are hidden
+
+            const ourServicesHeading = document.getElementById('our-services-heading');
+            if (ourServicesHeading) {
+                const headerOffset = document.querySelector('header').offsetHeight;
+                const elementPosition = ourServicesHeading.getBoundingClientRect().top + window.pageYOffset;
+                const offsetPosition = elementPosition - headerOffset;
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: "smooth"
+                });
+            }
+        }
+
+        // Event listeners for service cards (to show detail sections)
+        document.querySelectorAll('.service-card').forEach(card => {
+            card.addEventListener('click', function (e) {
+                e.preventDefault();
+                const serviceId = this.dataset.service;
+                showServiceDetail(serviceId);
+            });
+        });
+
+        // Smooth scrolling for main navigation links (Home, Services, About Us, Contact)
+        document.querySelectorAll('header nav a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                // If navigating to services, use the specific function
+                if (this.getAttribute('href') === '#services') {
+                    scrollToOurServices();
+                } else {
+                    // For other main sections, just show main content and scroll
+                    showMainContent(); // Ensure main content is visible
+
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+
+                    if (targetElement) {
+                        const headerOffset = document.querySelector('header').offsetHeight; // Get header height
+                        const elementPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
+                        let offsetPosition = elementPosition - headerOffset;
+
+                        // Special case for #home to scroll to the very top
+                        if (targetId === '#home') {
+                            offsetPosition = 0;
+                        }
+
+                        window.scrollTo({
+                            top: offsetPosition,
+                            behavior: "smooth"
+                        });
+                    }
+                }
+
+                // Close mobile menu if open after clicking a link
+                if (!mobileMenuOverlay.classList.contains('hidden')) {
+                    toggleMobileMenu();
+                }
+            });
+        });
+
+        // Add simple animations for better user experience
+        const style = document.createElement('style');
+        style.innerHTML = `
+            @keyframes fadeInDown {
+                from { opacity: 0; transform: translateY(-20px); }
+                to { opacity: 1; transform: translateY(0); }
+            }
+            @keyframes fadeInUp {
+                from { opacity: 0; transform: translateY(20px); }
+                to { opacity: 1; transform: translateY(0); }
+            }
+            @keyframes fadeIn {
+                from { opacity: 0; }
+                to { opacity: 1; }
+            }
+            @keyframes float1 {
+                0% { transform: translate(0, 0); }
+                50% { transform: translate(10px, 10px); }
+                100% { transform: translate(0, 0); }
+            }
+            @keyframes float2 {
+                0% { transform: translate(0, 0); }
+                50% { transform: translate(-10px, -10px); }
+                100% { transform: translate(0, 0); }
+            }
+            @keyframes float3 {
+                0% { transform: translate(0, 0); }
+                50% { transform: translate(15px, -5px); }
+                100% { transform: translate(0, 0); }
+            }
+            @keyframes float4 {
+                0% { transform: translate(0, 0); }
+                50% { transform: translate(-5px, 15px); }
+                100% { transform: translate(0, 0); }
+            }
+
+            .animate-fade-in-down { animation: fadeInDown 1s ease-out forwards; }
+            .animate-fade-in-up { animation: fadeInUp 1s ease-out forwards; animation-delay: 0.3s; }
+            .animate-fade-in { animation: fadeIn 1s ease-out forwards; }
+            .animate-float-1 { animation: float1 8s ease-in-out infinite; }
+            .animate-float-2 { animation: float2 9s ease-in-out infinite; }
+            .animate-float-3 { animation: float3 7s ease-in-out infinite; }
+            .animate-float-4 { animation: float4 10s ease-in-out infinite; }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>
