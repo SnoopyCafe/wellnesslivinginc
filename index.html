@@ -39,6 +39,95 @@
         .hero-logo-img {
             filter: brightness(0.7); /* Slightly darker for contrast on hero */
         }
+
+        /* Responsive Table Styles for mobile */
+        @media screen and (max-width: 768px) {
+            .responsive-table thead {
+                display: none; /* Hide table headers on small screens */
+            }
+
+            .responsive-table,
+            .responsive-table tbody,
+            .responsive-table tr,
+            .responsive-table td {
+                display: block; /* Make table elements stack vertically */
+                width: 100%; /* Take full width */
+            }
+
+            .responsive-table tr {
+                margin-bottom: 1rem; /* Add space between stacked rows */
+                border: 1px solid #e2e8f0; /* Add a border to rows */
+                border-radius: 0.5rem; /* Rounded corners for rows */
+                overflow: hidden; /* Ensure content stays within rounded corners */
+            }
+
+            .responsive-table td {
+                text-align: right; /* Align content to the right */
+                padding-left: 50%; /* Make space for the pseudo-element label */
+                position: relative; /* For pseudo-element positioning */
+                border: none; /* Remove individual cell borders */
+                padding-top: 0.75rem; /* Adjust padding */
+                padding-bottom: 0.75rem; /* Adjust padding */
+            }
+
+            .responsive-table td::before {
+                content: attr(data-label); /* Display the data-label as a prefix */
+                position: absolute;
+                left: 0;
+                width: 45%; /* Width for the label */
+                padding-left: 1rem; /* Padding for the label */
+                font-weight: 600; /* Bold label */
+                text-align: left; /* Align label to the left */
+                color: #059669; /* Color for the label */
+            }
+        }
+
+        /* FAQ specific styles */
+        .faq-item {
+            background-color: #ffffff;
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-bottom: 1rem;
+            overflow: hidden;
+        }
+
+        .faq-question {
+            padding: 1.25rem 1.5rem;
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #059669;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background-color 0.3s ease;
+        }
+
+        .faq-question:hover {
+            background-color: #f0fdf4; /* Light emerald hover */
+        }
+
+        .faq-question svg {
+            transition: transform 0.3s ease;
+        }
+
+        .faq-question.active svg {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            padding: 0 1.5rem 1.25rem;
+            color: #475569;
+            line-height: 1.6;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-out, padding 0.5s ease-out;
+        }
+
+        .faq-answer.open {
+            max-height: 500px; /* Adjust based on expected content length */
+            padding: 0.75rem 1.5rem 1.25rem;
+        }
     </style>
 </head>
 <body class="antialiased">
@@ -61,7 +150,7 @@
                 <li><a href="#home" class="text-white hover:text-emerald-200 font-medium transition duration-300">Home</a></li>
                 <li><a href="#services" class="text-white hover:text-emerald-200 font-medium transition duration-300">Services</a></li>
                 <li><a href="#about" class="text-white hover:text-emerald-200 font-medium transition duration-300">About Us</a></li>
-                <li><a href="#contact" class="bg-emerald-600 hover:bg-emerald-700 text-white font-semibold py-2 px-4 rounded-full shadow-md transition duration-300">Book Consultation</a></li>
+                <li><a href="#faq" class="text-white hover:text-emerald-200 font-medium transition duration-300">FAQ</a></li> <li><a href="#contact" class="bg-emerald-600 hover:bg-emerald-700 text-white font-semibold py-2 px-4 rounded-full shadow-md transition duration-300">Book Consultation</a></li>
             </ul>
         </nav>
 
@@ -77,7 +166,7 @@
                 <li><a href="#home" class="text-white hover:text-emerald-200 font-medium transition duration-300 py-2">Home</a></li>
                 <li><a href="#services" class="text-white hover:text-emerald-200 font-medium transition duration-300 py-2">Services</a></li>
                 <li><a href="#about" class="text-white hover:text-emerald-200 font-medium transition duration-300 py-2">About Us</a></li>
-                <li><a href="#contact" class="bg-emerald-600 hover:bg-emerald-700 text-white font-semibold py-2 px-4 rounded-full shadow-md transition duration-300">Book Consultation</a></li>
+                <li><a href="#faq" class="text-white hover:text-emerald-200 font-medium transition duration-300 py-2">FAQ</a></li> <li><a href="#contact" class="bg-emerald-600 hover:bg-emerald-700 text-white font-semibold py-2 px-4 rounded-full shadow-md transition duration-300">Book Consultation</a></li>
             </ul>
         </div>
     </header>
@@ -91,7 +180,7 @@
 
             <div class="absolute top-4 right-4 z-20 md:top-8 md:right-8">
                 <div class="bg-white p-2 rounded-full shadow-inner">
-                    <img src="https://framerusercontent.com/images/uOfq2iGVqx76v4QzJYDy0ncT7y0.png" alt="Wellness Living Logo" class="h-24 w-auto rounded-full hero-logo-img">
+                    <img src="https://framerusercontent.com/images/uOfq2iGVqx76v4QzJYDy0ncT7y0.png" alt="Wellness Living Logo" class="h-28 w-auto rounded-full hero-logo-img">
                 </div>
             </div>
 
@@ -102,7 +191,7 @@
                 <p class="text-lg md:text-xl text-white max-w-xl mb-8 animate-fade-in-up">
                     Experience holistic healing that nurtures your mind, body, and spirit through our personalized recovery services.
                 </p>
-                </div>
+            </div>
         </section>
 
         <section id="services" class="py-16 md:py-24 bg-white">
@@ -156,7 +245,7 @@
 
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     <a href="#" data-service="recovery-accommodations-detail" class="service-card block bg-gradient-to-br from-white to-emerald-50 p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 group">
-                        <img src="https://framerusercontent.com/images/vWkYnDXPlSpyGhk2mBd6uMOIec.jpeg?scale-down-to=4096" alt="Recovery Accommodations" class="w-full h-48 object-cover rounded-lg mb-4 shadow-md">
+                        <img src="https://framerusercontent.com/images/MdXl1YwggOPjONfa1BCmbFs7whM.jpg?scale-down-to=4096" alt="Recovery Accommodations" class="w-full h-48 object-cover rounded-lg mb-4 shadow-md">
                         <h3 class="text-2xl font-semibold text-emerald-700 mb-3 group-hover:text-emerald-800">Recovery Accommodations</h3>
                         <p class="text-gray-600 text-base">
                             Experience a tranquil and supportive environment designed for optimal healing and recovery, ensuring comfort and peace of mind.
@@ -214,6 +303,131 @@
             </div>
         </section>
 
+        <section id="faq" class="py-16 md:py-24 bg-gradient-to-br from-emerald-50 to-white">
+            <div class="container mx-auto px-4">
+                <h2 class="text-3xl md:text-5xl font-bold text-center text-emerald-700 mb-12">Frequently Asked Questions</h2>
+
+                <div class="max-w-3xl mx-auto">
+                    <div class="faq-item">
+                        <div class="faq-question" data-faq-toggle>
+                            <span>What services are included in a stay at Wellness Living Inc?</span>
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Your stay includes access to quaint, serene rooms, 24/7 licensed medical care, concierge and transportation services, and a full range of amenities designed for relaxation and recovery. Optional add-ons like IV therapy, lymphatic drainage massages, and personalized nutrition plans are available to enhance your healing experience.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question" data-faq-toggle>
+                            <span>How do I book an appointment at your clinic, and what is the process?</span>
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Booking an appointment is easy. Schedule your visit through our website, call during business hours, or visit us in person. After booking, you'll receive a confirmation with appointment details. If unsure about a treatment, we recommend starting with a consultation to discuss your concerns.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question" data-faq-toggle>
+                            <span>Do I need to follow any special instructions to prepare for my treatment?</span>
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Preparation varies by treatment. For most procedures, avoid heavy skincare products, makeup, or sun exposure beforehand. For treatments like laser therapy or chemical peels, you may need to stop using products like retinoids a few days prior. Tailored instructions will be provided when you book your appointment.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question" data-faq-toggle>
+                            <span>Are the treatments safe for people with sensitive or reactive skin types?</span>
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Yes, our treatments are designed to be safe and effective for all skin types, including sensitive or reactive skin. Our dermatologists take the time to understand your skin's unique needs and will adjust the treatment to ensure safety and optimal results. If you have specific allergies or sensitivities, please let us know during consultation.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question" data-faq-toggle>
+                            <span>How long does it usually take to see noticeable results?</span>
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </div>
+                        <div class="faq-answer">
+                            <p>The timeframe for visible results varies by treatment and skin condition. Chemical peels and facials often show improvements immediately, while laser therapy or acne treatments may take multiple sessions. During your consultation, we'll provide a clear timeline for your results.</p>
+                        </div>
+                    </div>
+
+                    <h3 class="text-2xl font-bold text-emerald-700 mt-12 mb-6 text-center">IV Vitamin Therapy</h3>
+                    <div class="faq-item">
+                        <div class="faq-question" data-faq-toggle>
+                            <span>What are benefits of IV Vitamin Therapy?</span>
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </div>
+                        <div class="faq-answer">
+                            <p>IV Vitamin Therapy offers numerous benefits, including enhanced energy levels, improved immune function, rapid rehydration, detoxification, and accelerated healing, especially beneficial for post-surgical recovery.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question" data-faq-toggle>
+                            <span>How does IV Vitamin Therapy aid recovery after plastic surgery?</span>
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </div>
+                        <div class="faq-answer">
+                            <p>After plastic surgery, IV Vitamin Therapy can significantly aid recovery by delivering essential nutrients directly to your bloodstream, which helps reduce inflammation, minimize bruising and swelling, boost your body's natural healing processes, and replenish energy.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question" data-faq-toggle>
+                            <span>Is IV Vitamin Therapy right for you?</span>
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </div>
+                        <div class="faq-answer">
+                            <p>IV Vitamin Therapy is suitable for many individuals seeking to optimize their health, enhance recovery, or boost their immune system. We recommend a consultation with our specialists to assess your specific needs and determine the most beneficial therapy for you.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question" data-faq-toggle>
+                            <span>What You Need to Know About IV Vitamin Therapy</span>
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </div>
+                        <div class="faq-answer">
+                            <p>IV Vitamin Therapy involves administering vitamins and minerals directly into your bloodstream, bypassing the digestive system for maximum absorption. Sessions are typically comfortable and relaxing, lasting between 30 to 60 minutes. Our team will guide you through the process and answer any questions you may have.</p>
+                        </div>
+                    </div>
+
+                    <h3 class="text-2xl font-bold text-emerald-700 mt-12 mb-6 text-center">Payment & Scheduling</h3>
+                    <div class="faq-item">
+                        <div class="faq-question" data-faq-toggle>
+                            <span>How can I book an appointment?</span>
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </div>
+                        <div class="faq-answer">
+                            <p>You can easily book an appointment through our website's "Book Consultation" button, by calling us during business hours, or by visiting our clinic in person. We'll send you a confirmation with all the details.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question" data-faq-toggle>
+                            <span>What is the payment process?</span>
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Payment is typically processed at the time of service. We accept major credit cards, and for certain packages, payment plans may be available. Please contact us directly to discuss specific payment options or insurance inquiries.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question" data-faq-toggle>
+                            <span>Can I reschedule or cancel my appointment?</span>
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Yes, you can reschedule or cancel your appointment. We kindly request that you notify us at least 24 hours in advance for any changes to avoid a cancellation fee. Please refer to our booking policy or contact us for more details.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <section id="contact" class="py-16 md:py-24 bg-white">
             <div class="container mx-auto px-4 text-center">
                 <h2 class="text-3xl md:text-5xl font-bold text-emerald-700 mb-8">Connect With Us</h2>
@@ -249,7 +463,7 @@
                 <h1 class="text-4xl md:text-5xl font-bold text-center text-emerald-700 mb-12">Recovery Accommodations</h1>
 
                 <div class="max-w-4xl mx-auto bg-white p-8 rounded-xl shadow-lg">
-                    <img src="https://framerusercontent.com/images/vWkYnDXPlSpyGhk2mBd6uMOIec.jpeg?scale-down-to=4096" alt="Recovery Accommodations" class="w-full h-64 object-cover rounded-lg mb-8 shadow-md">
+                    <img src="https://framerusercontent.com/images/MdXl1YwggOPjONfa1BCmbFs7whM.jpg" alt="Recovery Accommodations" class="w-full h-64 object-cover rounded-lg mb-8 shadow-md">
 
                     <h2 class="text-3xl font-semibold text-emerald-700 mb-6">Accommodations Include:</h2>
                     <ul class="list-disc list-inside text-lg text-gray-700 space-y-3 mb-8">
@@ -320,7 +534,7 @@
                 <div class="max-w-4xl mx-auto bg-white p-8 rounded-xl shadow-lg">
                     <h2 class="text-3xl font-semibold text-emerald-700 mb-6">Our IV Therapy Options:</h2>
                     <div class="overflow-x-auto">
-                        <table class="min-w-full bg-white border border-gray-200 rounded-lg shadow-sm">
+                        <table class="min-w-full bg-white border border-gray-200 rounded-lg shadow-sm responsive-table">
                             <thead>
                                 <tr class="bg-emerald-100 text-emerald-800 uppercase text-sm leading-normal">
                                     <th class="py-3 px-6 text-left">Therapy</th>
@@ -330,34 +544,34 @@
                             </thead>
                             <tbody class="text-gray-700 text-base font-light">
                                 <tr class="border-b border-gray-200 hover:bg-gray-50">
-                                    <td class="py-3 px-6 whitespace-nowrap">Immunity Boost IV</td>
-                                    <td class="py-3 px-6 whitespace-nowrap">$185</td>
-                                    <td class="py-3 px-6">Strengthens immune defense, reduces illness duration.</td>
+                                    <td class="py-3 px-6 whitespace-nowrap" data-label="Therapy">Immunity Boost IV</td>
+                                    <td class="py-3 px-6 whitespace-nowrap" data-label="Price">$185</td>
+                                    <td class="py-3 px-6" data-label="Benefits">Strengthens immune defense, reduces illness duration.</td>
                                 </tr>
                                 <tr class="border-b border-gray-200 hover:bg-gray-50">
-                                    <td class="py-3 px-6 whitespace-nowrap">Energy Revitalization IV</td>
-                                    <td class="py-3 px-6 whitespace-nowrap">$175</td>
-                                    <td class="py-3 px-6">Combats fatigue, enhances mental clarity and physical stamina.</td>
+                                    <td class="py-3 px-6 whitespace-nowrap" data-label="Therapy">Energy Revitalization IV</td>
+                                    <td class="py-3 px-6 whitespace-nowrap" data-label="Price">$175</td>
+                                    <td class="py-3 px-6" data-label="Benefits">Combats fatigue, enhances mental clarity and physical stamina.</td>
                                 </tr>
                                 <tr class="border-b border-gray-200 hover:bg-gray-50">
-                                    <td class="py-3 px-6 whitespace-nowrap">Hydration & Electrolyte Replenishment</td>
-                                    <td class="py-3 px-6 whitespace-nowrap">$150</td>
-                                    <td class="py-3 px-6">Rapid rehydration, balances electrolytes, supports overall bodily functions.</td>
+                                    <td class="py-3 px-6 whitespace-nowrap" data-label="Therapy">Hydration & Electrolyte Replenishment</td>
+                                    <td class="py-3 px-6 whitespace-nowrap" data-label="Price">$150</td>
+                                    <td class="py-3 px-6" data-label="Benefits">Rapid rehydration, balances electrolytes, supports overall bodily functions.</td>
                                 </tr>
                                 <tr class="border-b border-gray-200 hover:bg-gray-50">
-                                    <td class="py-3 px-6 whitespace-nowrap">Detox & Cleanse IV</td>
-                                    <td class="py-3 px-6 whitespace-nowrap">$200</td>
-                                    <td class="py-3 px-6">Aids in toxin elimination, supports liver function, promotes clearer skin.</td>
+                                    <td class="py-3 px-6 whitespace-nowrap" data-label="Therapy">Detox & Cleanse IV</td>
+                                    <td class="py-3 px-6 whitespace-nowrap" data-label="Price">$200</td>
+                                    <td class="py-3 px-6" data-label="Benefits">Aids in toxin elimination, supports liver function, promotes clearer skin.</td>
                                 </tr>
                                 <tr class="border-b border-gray-200 hover:bg-gray-50">
-                                    <td class="py-3 px-6 whitespace-nowrap">Post-Surgical Recovery IV</td>
-                                    <td class="py-3 px-6 whitespace-nowrap">$250</td>
-                                    <td class="py-3 px-6">Accelerates healing, reduces inflammation, and minimizes discomfort after surgery.</td>
+                                    <td class="py-3 px-6 whitespace-nowrap" data-label="Therapy">Post-Surgical Recovery IV</td>
+                                    <td class="py-3 px-6 whitespace-nowrap" data-label="Price">$250</td>
+                                    <td class="py-3 px-6" data-label="Benefits">Accelerates healing, reduces inflammation, and minimizes discomfort after surgery.</td>
                                 </tr>
                                 <tr class="hover:bg-gray-50">
-                                    <td class="py-3 px-6 whitespace-nowrap">Customized Wellness IV</td>
-                                    <td class="py-3 px-6 whitespace-nowrap">Varies</td>
-                                    <td class="py-3 px-6">Tailored blend of nutrients to meet your specific health goals.</td>
+                                    <td class="py-3 px-6 whitespace-nowrap" data-label="Therapy">Customized Wellness IV</td>
+                                    <td class="py-3 px-6 whitespace-nowrap" data-label="Price">Varies</td>
+                                    <td class="py-3 px-6" data-label="Benefits">Tailored blend of nutrients to meet your specific health goals.</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -592,7 +806,13 @@
             if (ourServicesHeading) {
                 const headerOffset = document.querySelector('header').offsetHeight;
                 const elementPosition = ourServicesHeading.getBoundingClientRect().top + window.pageYOffset;
-                const offsetPosition = elementPosition - headerOffset;
+                let offsetPosition = elementPosition - headerOffset;
+
+                // No special case for #home needed here, as this function is specific to #our-services-heading
+                // if (targetId === '#home') {
+                //     offsetPosition = 0;
+                // }
+
                 window.scrollTo({
                     top: offsetPosition,
                     behavior: "smooth"
@@ -645,6 +865,19 @@
                 if (!mobileMenuOverlay.classList.contains('hidden')) {
                     toggleMobileMenu();
                 }
+            });
+        });
+
+        // FAQ Toggle Logic
+        document.querySelectorAll('[data-faq-toggle]').forEach(question => {
+            question.addEventListener('click', function() {
+                const answer = this.nextElementSibling; // The answer div is the next sibling
+                const icon = this.querySelector('svg');
+
+                // Toggle the 'open' class on the answer
+                answer.classList.toggle('open');
+                // Toggle the 'active' class on the question for icon rotation
+                this.classList.toggle('active');
             });
         });
 
